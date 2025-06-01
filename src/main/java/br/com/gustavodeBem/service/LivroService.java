@@ -100,7 +100,36 @@ public class LivroService implements DAO{
 
 	@Override
 	public Livro getById(int id) {
-		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM livro WHERE id = ? ";
+		Livro livro = new Livro();
+		
+		try(Connection conm = ConectionFactory.getConection();
+			PreparedStatement ps = conm.prepareStatement(sql))
+	{
+			
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+			
+			   livro.setId(rs.getInt("id"));
+               livro.setNome(rs.getString("nome"));
+               livro.setAutor(rs.getString("autor"));
+               livro.setDataPublicacao(rs.getString("dataPublicacao"));
+               livro.setEditora(rs.getString("editora"));
+               livro.setSinopse(rs.getString("sinopse"));
+               livro.setGenero(rs.getString("genero"));
+               
+               return livro;
+            
+	       }
+		
+			
+			
+		}catch(SQLException e) {
+			
+			
+			e.printStackTrace();
+		}
 		return null;
 	}
 

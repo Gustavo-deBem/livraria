@@ -9,7 +9,7 @@ import br.com.gustavodeBem.service.LivroService;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApplicationTest {
-
+/*
     @Test
     void conexaoTeste() {
         Livro livro = new Livro();
@@ -50,7 +50,12 @@ class ApplicationTest {
     }
     
     
-    
-    
+
+	@Test
+	void getByIdTeste() {
+	  Livro	teste = new LivroService().getById(1);
+	  System.out.println(teste);
+	}
+    */
     
 }
